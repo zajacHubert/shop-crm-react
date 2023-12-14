@@ -1,25 +1,18 @@
 import React from 'react';
-import GlobalStyle from './styles/GlobalStyle';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './styles/theme';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-  Outlet,
-} from 'react-router-dom';
-import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
-import path from 'path';
+import Header from './components/ui/Header';
 import HomePage from './pages/HomePage';
-import ProductsPage from './pages/product/ProductsPage';
-import { Endpoint } from './types/request';
-import SingleProductPage from './pages/product/SingleProductPage';
-import AddProductPage from './pages/product/AddProductPage';
-import EditProductPage from './pages/product/EditProductPage';
 import OrdersPage from './pages/order/OrdersPage';
 import SingleOrderPage from './pages/order/SingleOrderPage';
+import AddProductPage from './pages/product/AddProductPage';
+import EditProductPage from './pages/product/EditProductPage';
+import ProductsPage from './pages/product/ProductsPage';
+import SingleProductPage from './pages/product/SingleProductPage';
+import GlobalStyle from './styles/GlobalStyle';
+import { theme } from './styles/theme';
+import { Endpoint } from './types/request';
 
 const Layout = () => {
   return (
