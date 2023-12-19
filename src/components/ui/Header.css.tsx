@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
   width: 100%;
   margin-bottom: 20px;
   z-index: 20;
+  color: #fff;
 `;
 
 export const StyledRow = styled.div`
@@ -30,20 +31,93 @@ export const StyledBoxLogo = styled.div`
   }
 `;
 
-export const StyledBoxUser = styled.div``;
+export const StyledBoxUser = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 4px;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    flex: 1;
+  }
+`;
 
 export const StyledPName = styled.p``;
 
-export const StyledBoxIconShopCart = styled.div``;
+export const StyledBoxIconShopCart = styled.div`
+  position: relative;
+  cursor: pointer;
+`;
 
-export const StyledSpanIcon = styled.span``;
+export const StyledSpanIcon = styled.span`
+  position: absolute;
+  left: 16px;
+  bottom: 8px;
+  color: #4ade80;
+  font-weight: 600;
+`;
 
-export const StyledBoxMobileManu = styled.div``;
+export const StyledBoxMobileMenu = styled.div`
+  color: #fff;
+  cursor: pointer;
 
-export const StyledNav = styled.nav``;
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`;
 
-export const StyledManuList = styled.ul``;
+interface StyledNavProps {
+  isOpen: boolean;
+}
+
+export const StyledNav = styled.nav<StyledNavProps>`
+  background-color: #94a3b8;
+  transition: all 0.5s;
+  position: absolute;
+  padding: 16px; // 1rem in pixels
+  top: 0;
+  left: ${({ isOpen }) => (isOpen ? '-18px' : '-218px')};
+  width: 200px;
+  height: 240px;
+  z-index: 10;
+
+  @media (min-width: 1024px) {
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    position: static;
+    height: auto;
+  }
+`;
+
+export const StyledListMenu = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 8px; // 0.5rem in pixels
+  align-items: center;
+  padding: 16px; // 1rem in pixels
+  flex: 1;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+`;
 
 export const StyledListItem = styled.li``;
 
-export const StyledBtnLogin = styled.button``;
+export const StyledBtnLogin = styled.button`
+  background-color: #ecc94b;
+  padding: 10px 20px; // 0.625rem 1.25rem in pixels
+  border-radius: 4px; // 0.25rem in pixels
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #fff;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #d69e2e;
+  }
+`;

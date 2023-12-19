@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -13,6 +14,8 @@ import SingleProductPage from './pages/product/SingleProductPage';
 import GlobalStyle from './styles/GlobalStyle';
 import { theme } from './styles/theme';
 import { Endpoint } from './types/request';
+import { Provider } from 'react-redux';
+import { store } from './store/index';
 
 const Layout = () => {
   return (
@@ -65,13 +68,19 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </QueryClientProvider>
+      </Provider>
     </>
   );
 };
