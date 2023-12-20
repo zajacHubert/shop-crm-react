@@ -76,7 +76,7 @@ export const StyledNav = styled.nav<StyledNavProps>`
   background-color: #94a3b8;
   transition: all 0.5s;
   position: absolute;
-  padding: 16px; // 1rem in pixels
+  padding: 16px 0; // 1rem in pixels
   top: 0;
   left: ${({ isOpen }) => (isOpen ? '-18px' : '-218px')};
   width: 200px;
@@ -98,11 +98,12 @@ export const StyledListMenu = styled.ul`
   flex-direction: column;
   gap: 8px; // 0.5rem in pixels
   align-items: center;
-  padding: 16px; // 1rem in pixels
+  padding: 16px 0; // 1rem in pixels
   flex: 1;
 
   @media (min-width: 1024px) {
     flex-direction: row;
+    justify-content: flex-end;
   }
 `;
 
