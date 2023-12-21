@@ -17,8 +17,7 @@ export const StyledTitle = styled.h1`
   color: #dc2626;
   max-width: 240px;
   letter-spacing: -0.05em;
-  margin-bottom: 48px;
-  margin: 0 auto;
+  margin: 0 auto 48px;
   font-family: 'Lobster', sans-serif;
 
   @media (min-width: 768px) {
@@ -26,12 +25,6 @@ export const StyledTitle = styled.h1`
     max-width: 300px;
     margin-bottom: 80px;
   }
-`;
-
-export const StyledSpanTitle = styled.span`
-  display: block;
-  margin-top: 16px;
-  font-family: 'Lobster', sans-serif;
 `;
 
 export const StyledContainer = styled.div``;
@@ -44,6 +37,7 @@ export const StyledSubtitle = styled.h2`
 
   @media (min-width: 1024px) {
     font-size: 36px;
+    margin-bottom: 36px;
   }
 `;
 

@@ -16,7 +16,6 @@ import {
   StyledPCategory,
   StyledPDesc,
   StyledSection,
-  StyledSpanTitle,
   StyledSubtitle,
   StyledTextPrice,
   StyledTitle,
@@ -40,10 +39,7 @@ const HomePage = () => {
 
   return (
     <StyledSection>
-      <StyledTitle>
-        Thank You for Shopping With us!
-        <StyledSpanTitle>(online)</StyledSpanTitle>
-      </StyledTitle>
+      <StyledTitle>Thank You for Shopping With us!</StyledTitle>
       <StyledContainer>
         <StyledSubtitle>Check our newest products</StyledSubtitle>
         <StyledboxProducts>
