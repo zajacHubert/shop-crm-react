@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { getRecordsByPage } from '../api/shopApi';
+import ButtonBuy from '../components/product/ButtonBuy';
 import { CategoryName } from '../types/product';
 import { Endpoint } from '../types/request';
 import { getImageSrc } from '../utils/getImageSrc';
@@ -60,6 +61,7 @@ const HomePage = () => {
                   <StyledTextPrice>
                     {product.price.toFixed(2)} €
                   </StyledTextPrice>
+                  <ButtonBuy product={product} />
                 </StyledBoxActions>
               </StyledBoxProductText>
             </StyledBoxProduct>

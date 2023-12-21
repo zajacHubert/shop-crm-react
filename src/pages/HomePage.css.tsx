@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 export const StyledSection = styled.section`
   padding-bottom: 2rem;
-  padding-top: 5rem;
-  margin: 0 auto;
-  max-width: 1500px;
 
   @media (min-width: 768px) {
     padding-bottom: 4rem;
@@ -42,15 +39,13 @@ export const StyledSubtitle = styled.h2`
 `;
 
 export const StyledboxProducts = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
-    align-items: flex-start;
   }
 `;
 
@@ -58,6 +53,7 @@ export const StyledBoxProduct = styled.div`
   border-radius: 0.75rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
 
   @media (min-width: 480px) {
     width: 24rem;

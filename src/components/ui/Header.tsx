@@ -18,15 +18,20 @@ import { FaShopify } from 'react-icons/fa';
 import { Endpoint } from '../../types/request';
 import { AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/userSlice';
+import { RootState } from '../../store';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const loggedUser = true;
-  const hasUserEmployeePrivileges = true;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loggedUser = useSelector((state: RootState) => state.user.loggedUser);
+  const hasUserEmployeePrivileges =
+    loggedUser && loggedUser.role?.name !== 'client';
+  const itemsQuantity = useSelector(
+    (state: RootState) => state.createOrder.itemsQuantity
+  );
 
   const handleLinkClick = () => {
     if (isOpen) {
@@ -48,11 +53,15 @@ const Header = () => {
           </Link>
         </StyledBoxLogo>
         <StyledBoxUser>
-          {loggedUser && <StyledPName>User name</StyledPName>}
+          {loggedUser && (
+            <StyledPName>
+              {loggedUser.first_name} {loggedUser.last_name}
+            </StyledPName>
+          )}
           <Link to={`/${Endpoint.Orders}/new`}>
             <StyledBoxIconShopCart>
               <AiOutlineShoppingCart size={20} />
-              <StyledSpanIcon>{4}</StyledSpanIcon>
+              <StyledSpanIcon>{itemsQuantity}</StyledSpanIcon>
             </StyledBoxIconShopCart>
           </Link>
         </StyledBoxUser>
