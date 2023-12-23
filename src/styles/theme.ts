@@ -5,6 +5,10 @@ export const theme: DefaultTheme = {
     bgGray: '#4b5563',
   },
   btn: {
-    bg: '#eab308',
+    bgYellow: '#eab308',
+    bgBrown: '#854d0e',
+  },
+  border: {
+    gray: '#9ca3af',
   },
 };

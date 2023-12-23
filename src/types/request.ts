@@ -46,6 +46,7 @@ type SortParamRecord = SortParamProduct | SortParamOrder | SortParamUser;
 interface BasicGetRecordsByPageParams<T extends SortParamRecord> {
   page: number;
   sortParam?: T;
+  search?: string;
   // this notation states that if sort param is given, sort direction is mandatory
   sortDirection?: SortDirection extends { sortParam: infer P }
     ? P extends SortParamProduct
@@ -60,14 +61,10 @@ export interface GetProductsByPageParams
 }
 
 export interface GetOrdersByPageParams
-  extends BasicGetRecordsByPageParams<SortParamOrder> {
-  search?: string;
-}
+  extends BasicGetRecordsByPageParams<SortParamOrder> {}
 
 export interface GetUsersByPageParams
-  extends BasicGetRecordsByPageParams<SortParamUser> {
-  search?: string;
-}
+  extends BasicGetRecordsByPageParams<SortParamUser> {}
 
 export type GetRecordsByPageParams =
   | GetProductsByPageParams

@@ -7,8 +7,6 @@ import {
   GetRecordsByPageParams,
 } from '../types/request';
 
-console.log('APIURL', API_URL);
-
 const shopApiInstance = axios.create({
   baseURL: API_URL,
   headers: {
@@ -27,11 +25,7 @@ export const getRecordsByPage = async <T extends keyof EndpointDataByPageMap>(
     }
   }
 
-  console.log('URL', url);
-  console.log(shopApiInstance);
-
   const res = await shopApiInstance.get(`/${url}`);
-  console.log('RES', res);
 
   if (res.status >= 200 && res.status < 300) {
     return res.data as EndpointDataByPageMap[T];

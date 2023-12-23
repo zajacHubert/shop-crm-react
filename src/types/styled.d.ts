@@ -6,7 +6,11 @@ declare module 'styled-components' {
       bgGray: string;
     };
     btn: {
-      bg: string;
+      bgYellow: string;
+      bgBrown: string;
+    };
+    border: {
+      gray: string;
     };
   }
 }
