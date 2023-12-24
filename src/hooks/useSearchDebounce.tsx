@@ -8,8 +8,7 @@ type ValidEndpoints = keyof EndpointDataByPageMap;
 const useSearchRecordsDebounce = (
   endpoint: ValidEndpoints,
   searchTerm: string,
-  delay: number,
-  isSearchEdited: boolean
+  delay: number
 ) => {
   const [debouncedSearchValue, setDebouncedSearchValue] =
     useState<string>(searchTerm);
@@ -46,13 +45,13 @@ const useSearchRecordsDebounce = (
   if (searchTerm.length < 3) {
     return {
       isLoading: false,
-      data: isSearchEdited ? 'Type at least 3 characters' : '',
+      data: 'Type at least 3 characters',
     };
   }
 
   return {
     isLoading: isLoading || isFetching,
-    data: Array.isArray(data) && data.length ? data : 'No records found',
+    data: data ? data : 'No records found',
   };
 };
 

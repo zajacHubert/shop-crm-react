@@ -25,12 +25,15 @@ const SearchInput = ({ endpoint }: SearchInputProps) => {
   const { data, isLoading } = useSearchRecordsDebounce(
     endpoint,
     searchTerm,
-    500,
-    isSearchEdited
+    500
   );
   const navigate = useNavigate();
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const displaySuggestions =
+    showSuggestions && Array.isArray(data) && data.length;
+  const displayMessage =
+    !displaySuggestions && typeof data === 'string' && searchTerm && !isLoading;
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -64,23 +67,22 @@ const SearchInput = ({ endpoint }: SearchInputProps) => {
 
       {isLoading && <SpinnerBtn />}
 
-      {showSuggestions && data && data.length && (
+      {displaySuggestions && (
         <StyledBoxSuggestions>
-          {Array.isArray(data) ? (
-            data.map((product) => (
-              <StyledBoxSuggestion
-                key={product.id}
-                onClick={() => navigate(`/${endpoint}/${product.id}`)}
-              >
-                <StyledPTitle>{product.title}</StyledPTitle>
-              </StyledBoxSuggestion>
-            ))
-          ) : (
-            <StyledBoxMessage>
-              <StyledPMessage>{data}</StyledPMessage>
-            </StyledBoxMessage>
-          )}
+          {data.map((product) => (
+            <StyledBoxSuggestion
+              key={product.id}
+              onClick={() => navigate(`/${endpoint}/${product.id}`)}
+            >
+              <StyledPTitle>{product.title}</StyledPTitle>
+            </StyledBoxSuggestion>
+          ))}
         </StyledBoxSuggestions>
+      )}
+      {displayMessage && (
+        <StyledBoxMessage>
+          <StyledPMessage>{data}</StyledPMessage>
+        </StyledBoxMessage>
       )}
     </StyledContainer>
   );
