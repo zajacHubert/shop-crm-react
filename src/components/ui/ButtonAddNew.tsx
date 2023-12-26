@@ -20,6 +20,7 @@ const ButtonAddNew: React.FC<ButtonAddNewProps> = ({ endpoint }) => {
       <StyledSpanIcon>
         <FaPlus size={14} style={{ color: 'white', fontWeight: 'bold' }} />
       </StyledSpanIcon>
+      Add new
     </StyledBtn>
   ) : null;
 };

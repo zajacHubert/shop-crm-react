@@ -1,4 +1,4 @@
-import { Category, CategoryName } from './product';
+import { CategoryName } from './product';
 import { SortParamOrder, SortParamProduct, SortDirection } from './request';
 
 export enum FilterType {

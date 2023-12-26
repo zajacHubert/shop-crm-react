@@ -11,11 +11,11 @@ export const StyledBtn = styled.button`
   color: #fff;
   transition: 0.5s;
   background-color: ${({ theme }) => theme.btn.bgYellow};
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     padding: 8px;
     font-size: 18px;
-    margin: 0 auto;
   }
 
   &:hover {

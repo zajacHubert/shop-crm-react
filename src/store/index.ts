@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import userReducer from './slices/userSlice';
+import confirmDialogReducer from './slices/confirmDialogSlice';
 import createOrderReducer from './slices/createOrderSlice';
 import {
   persistStore,
@@ -24,6 +25,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   createOrder: createOrderReducer,
+  confirmDialog: confirmDialogReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

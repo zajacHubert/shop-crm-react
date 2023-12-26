@@ -5,8 +5,8 @@ export const theme: DefaultTheme = {
     bgGray: '#4b5563',
   },
   btn: {
-    bgYellow: '#eab308',
-    bgBrown: '#854d0e',
+    bgYellow: '#ecc94b',
+    bgBrown: '#d69e2e',
   },
   border: {
     gray: '#9ca3af',
