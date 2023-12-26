@@ -17,6 +17,7 @@ import { Endpoint } from './types/request';
 import { Provider } from 'react-redux';
 import { persistor, store } from './store/index';
 import { PersistGate } from 'redux-persist/integration/react';
+import ConfirmDialog from './components/ui/ConfirmDialog';
 
 const Layout = () => {
   const StyledMain = styled.main`
@@ -33,6 +34,7 @@ const Layout = () => {
   return (
     <>
       <Header />
+      <ConfirmDialog />
       <StyledMain>
         <Outlet />
       </StyledMain>
