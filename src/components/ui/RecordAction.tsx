@@ -9,7 +9,7 @@ import { FaTrash } from 'react-icons/fa';
 import { Endpoint } from '../../types/request';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { AiFillEdit } from 'react-icons/ai';
+import { MdEdit } from 'react-icons/md';
 import { StyledContainer } from './RecordAction.css';
 
 interface RecordActionProps {
@@ -39,7 +39,7 @@ const RecordAction = ({ id, endpoint }: RecordActionProps) => {
     <StyledContainer>
       {isEditorRole && isNotProductEndpoint && previewLink}
       <Link to={`/${Endpoint.Products}/${id}/edit`}>
-        <AiFillEdit size={22} />
+        <MdEdit size={20} />
       </Link>
       {isEditorRole && (
         <FaTrash
