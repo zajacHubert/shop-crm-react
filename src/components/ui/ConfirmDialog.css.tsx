@@ -18,12 +18,21 @@ export const StyledBoxDialog = styled.div`
   text-align: center;
   max-width: 95%;
   width: 340px;
+
+  @media (min-width: 768px) {
+    width: 400px;
+    padding: 2rem;
+  }
 `;
 
 export const StyledParagraph = styled.p`
   font-size: 1rem;
   color: #4b5563;
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 interface StyledButtonProps {
@@ -43,5 +52,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
   &:hover {
     opacity: 0.7;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 16px;
   }
 `;
