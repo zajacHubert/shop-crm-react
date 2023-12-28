@@ -71,5 +71,6 @@ export const StyledBoxProducts = styled.div`
 
   @media (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
   }
 `;

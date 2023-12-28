@@ -38,10 +38,11 @@ export const StyledSubtitle = styled.h2`
   }
 `;
 
-export const StyledboxProducts = styled.div`
+export const StyledBoxProducts = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  gap: 20px;
 
   @media (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -51,9 +52,7 @@ export const StyledboxProducts = styled.div`
 
 export const StyledBoxProduct = styled.div`
   border-radius: 0.75rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  margin-bottom: 24px;
+  box-shadow: ${({ theme }) => theme.border.boxShadow};
 
   @media (min-width: 480px) {
     width: 24rem;

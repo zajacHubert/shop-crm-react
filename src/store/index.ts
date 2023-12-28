@@ -4,6 +4,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import userReducer from './slices/userSlice';
 import confirmDialogReducer from './slices/confirmDialogSlice';
 import createOrderReducer from './slices/createOrderSlice';
+import configReducer from './slices/configSlice';
 import {
   persistStore,
   persistReducer,
@@ -19,13 +20,14 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whitelist: ['user', 'createOrder'],
+  whitelist: ['user', 'createOrder', 'config'],
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
   createOrder: createOrderReducer,
   confirmDialog: confirmDialogReducer,
+  config: configReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

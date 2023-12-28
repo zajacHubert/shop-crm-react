@@ -42,7 +42,7 @@ interface StyledButtonProps {
 export const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
   background-color: ${({ bgColor }) => bgColor};
-  color: white;
+  color: #fff;
   font-weight: 600;
   padding: 8px 34px;
   border-radius: 0.25rem;

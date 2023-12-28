@@ -21,6 +21,7 @@ import { BiMenuAltLeft } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/userSlice';
 import { RootState } from '../../store';
+import ThemeToggler from './ThemeToggler';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -135,6 +136,7 @@ const Header = () => {
             )}
           </StyledListMenu>
         </StyledNav>
+        <ThemeToggler />
       </StyledRow>
     </StyledHeader>
   );

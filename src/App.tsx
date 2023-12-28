@@ -12,12 +12,12 @@ import EditProductPage from './pages/product/EditProductPage';
 import ProductsPage from './pages/product/ProductsPage';
 import SingleProductPage from './pages/product/SingleProductPage';
 import GlobalStyle from './styles/GlobalStyle';
-import { theme } from './styles/theme';
 import { Endpoint } from './types/request';
-import { Provider } from 'react-redux';
-import { persistor, store } from './store/index';
+import { Provider, useSelector } from 'react-redux';
+import { persistor, RootState, store } from './store/index';
 import { PersistGate } from 'redux-persist/integration/react';
 import ConfirmDialog from './components/ui/ConfirmDialog';
+import { darkTheme, lightTheme } from './styles/theme';
 
 const Layout = () => {
   const StyledMain = styled.main`
@@ -87,18 +87,18 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 
 const App = () => {
+  const isDarkTheme = useSelector(
+    (state: RootState) => state.config.isDarkTheme
+  );
+
   return (
     <>
-      <PersistGate loading={null} persistor={persistor}>
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <ThemeProvider theme={theme}>
-              <GlobalStyle />
-              <RouterProvider router={router} />
-            </ThemeProvider>
-          </QueryClientProvider>
-        </Provider>
-      </PersistGate>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <GlobalStyle />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </QueryClientProvider>
     </>
   );
 };

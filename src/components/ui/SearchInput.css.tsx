@@ -10,6 +10,8 @@ export const StyledContainer = styled.div`
 export const StyledInput = styled.input`
   padding: 8px 16px;
   width: 256px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.text.default};
 
   &::placeholder {
     color: #6b7280;

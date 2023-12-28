@@ -7,11 +7,11 @@ export const StyledFooter = styled.footer`
 `;
 
 export const StyledText = styled.h4`
-  color: #fff;
   text-align: center;
   margin-bottom: 16px;
   font-size: 18px;
   font-family: 'Pacifico', cursive;
+  color: #fff;
 
   @media (min-width: 640px) {
     font-size: 20px;

@@ -6,8 +6,7 @@ export const StyledContainerProduct = styled.div`
   flex-direction: column;
   width: 100%;
   margin-bottom: 40px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: ${({ theme }) => theme.border.boxShadow};
   border-radius: 12px;
 `;
 
@@ -53,7 +52,6 @@ export const StyledBoxCategory = styled.div<StyledBoxCategoryProps>`
   background-color: ${({ bgColor }) => bgColor};
   border-radius: 6px;
   padding: 8px;
-  color: #fff;
 `;
 
 export const StyledPCategory = styled.p`

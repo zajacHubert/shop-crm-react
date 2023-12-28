@@ -1,4 +1,3 @@
-import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -9,6 +8,12 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
+
+body {
+    background-color: ${({ theme }) => theme.bg.default};
+    color: ${({ theme }) => theme.text.default};
+    transition: background-color 0.3s, color 0.3s;
+  }
 
 ul {
   list-style: none;

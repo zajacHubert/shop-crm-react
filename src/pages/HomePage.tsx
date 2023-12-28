@@ -10,7 +10,7 @@ import {
   StyledBoxCategory,
   StyledBoxImg,
   StyledBoxProduct,
-  StyledboxProducts,
+  StyledBoxProducts,
   StyledBoxProductText,
   StyledBoxProductTitle,
   StyledContainer,
@@ -43,7 +43,7 @@ const HomePage = () => {
       <StyledTitle>Thank You for Shopping With us!</StyledTitle>
       <StyledContainer>
         <StyledSubtitle>Check our newest products</StyledSubtitle>
-        <StyledboxProducts>
+        <StyledBoxProducts>
           {products?.data.slice(0, 3).map((product) => (
             <StyledBoxProduct key={product.id}>
               <StyledBoxImg>
@@ -66,7 +66,7 @@ const HomePage = () => {
               </StyledBoxProductText>
             </StyledBoxProduct>
           ))}
-        </StyledboxProducts>
+        </StyledBoxProducts>
       </StyledContainer>
     </StyledSection>
   );

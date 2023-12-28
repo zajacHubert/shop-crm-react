@@ -3,7 +3,11 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     bg: {
+      default: string;
       bgGray: string;
+    };
+    text: {
+      default: string;
     };
     btn: {
       bgYellow: string;
@@ -11,6 +15,7 @@ declare module 'styled-components' {
     };
     border: {
       gray: string;
+      boxShadow: string;
     };
   }
 }
