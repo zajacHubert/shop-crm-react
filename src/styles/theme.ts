@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
   },
   text: {
     default: '#000',
+    error: '#ef4444',
   },
   btn: {
     bgYellow: '#ecc94b',
@@ -26,6 +27,7 @@ export const darkTheme: DefaultTheme = {
   },
   text: {
     default: '#fff',
+    error: '#ef4444',
   },
   btn: {
     bgYellow: '#ecc94b',

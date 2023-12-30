@@ -5,6 +5,7 @@ import userReducer from './slices/userSlice';
 import confirmDialogReducer from './slices/confirmDialogSlice';
 import createOrderReducer from './slices/createOrderSlice';
 import configReducer from './slices/configSlice';
+import popupReducer from './slices/popupSlice';
 import {
   persistStore,
   persistReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   createOrder: createOrderReducer,
   confirmDialog: confirmDialogReducer,
   config: configReducer,
+  popup: popupReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

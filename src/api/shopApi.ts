@@ -7,7 +7,7 @@ import {
   GetRecordsByPageParams,
 } from '../types/request';
 
-const shopApiInstance = axios.create({
+export const shopApiInstance = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',

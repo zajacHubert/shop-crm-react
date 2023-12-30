@@ -8,6 +8,7 @@ declare module 'styled-components' {
     };
     text: {
       default: string;
+      error: string;
     };
     btn: {
       bgYellow: string;
