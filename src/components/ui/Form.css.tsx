@@ -58,6 +58,7 @@ export const StyledInput = styled.input`
   border-bottom: 1px solid ${({ theme }) => theme.border.gray};
   width: 100%;
   background-color: transparent;
+  color: ${({ theme }) => theme.text.default};
 
   @media (min-width: 640px) {
     font-size: 18px;
