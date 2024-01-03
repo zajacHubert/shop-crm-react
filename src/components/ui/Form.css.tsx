@@ -79,6 +79,28 @@ export const StyledTextarea = styled.textarea`
   }
 `;
 
+// export const StyledSelect = styled.select`
+//   padding: 8px;
+//   margin-bottom: 40px;
+//   border: none;
+//   border: 1px solid ${({ theme }) => theme.border.gray};
+//   width: 100%;
+//   background-color: transparent;
+
+//   @media (min-width: 640px) {
+//     font-size: 18px;
+//   }
+
+//   option {
+//     color: red;
+//   }
+// `;
+
+export const StyledSelectContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 export const StyledSelect = styled.select`
   padding: 8px;
   margin-bottom: 40px;
@@ -86,14 +108,43 @@ export const StyledSelect = styled.select`
   border: 1px solid ${({ theme }) => theme.border.gray};
   width: 100%;
   background-color: transparent;
+  position: relative;
 
   @media (min-width: 640px) {
     font-size: 18px;
   }
 
-  option {
-    color: red;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+
+  &::-ms-expand {
+    display: none;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 6px 0;
+    border-color: ${({ theme }) => theme.text.default} transparent transparent;
+    transform: translateY(-50%);
+  }
+`;
+
+export const ArrowIcon = styled.svg`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: ${({ theme }) => theme.text.default};
 `;
 
 export const StyledBtnSubmit = styled.button`

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
 import { Formik, FormikHelpers, FormikProps } from 'formik';
-import { useRouter } from 'next/navigation';
+import { FiChevronDown } from 'react-icons/fi';
 
 import { useDispatch } from 'react-redux';
 import { Category, FormAddProduct } from '../../types/product';
@@ -9,6 +9,7 @@ import { ALLOWED_TYPES } from '../../constants/form';
 import SpinnerBtn from '../ui/SpinnerBtn';
 
 import {
+  ArrowIcon,
   StyledBoxLabelError,
   StyledContainerUpload,
   StyledForm,
@@ -20,6 +21,7 @@ import {
   StyledPTypes,
   StyledPUpload,
   StyledSelect,
+  StyledSelectContainer,
   StyledSpanUpload,
   StyledSVGUpload,
   StyledTextarea,
@@ -203,14 +205,33 @@ const AddProductForm = () => {
                 <StyledPError>{errors.category_id}</StyledPError>
               )}
             </StyledBoxLabelError>
-            <StyledSelect>
-              <option value=''>Choose category</option>
-              {/* {categories.map((category) => (
+            {/* <StyledSelect>
+              <option value=''>Choose category</option> */}
+            {/* {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
                   </option>
                 ))} */}
-            </StyledSelect>
+            {/* </StyledSelect> */}
+            <StyledSelectContainer>
+              <StyledSelect>
+                <option value=''>kutas</option>
+              </StyledSelect>
+              <ArrowIcon
+                viewBox='0 0 20 16'
+                aria-hidden='true'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+              >
+                <path
+                  stroke='currentColor'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2'
+                />
+              </ArrowIcon>
+            </StyledSelectContainer>
           </StyledForm>
         );
       }}
