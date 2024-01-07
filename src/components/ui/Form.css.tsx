@@ -80,23 +80,6 @@ export const StyledTextarea = styled.textarea`
   }
 `;
 
-// export const StyledSelect = styled.select`
-//   padding: 8px;
-//   margin-bottom: 40px;
-//   border: none;
-//   border: 1px solid ${({ theme }) => theme.border.gray};
-//   width: 100%;
-//   background-color: transparent;
-
-//   @media (min-width: 640px) {
-//     font-size: 18px;
-//   }
-
-//   option {
-//     color: red;
-//   }
-// `;
-
 export const StyledSelectContainer = styled.div`
   position: relative;
   width: 100%;
@@ -240,4 +223,20 @@ export const StyledPTypes = styled.p`
 
 export const StyledInputUpload = styled.input`
   display: none;
+`;
+
+export const StyledPRedirect = styled.p`
+  text-align: center;
+  font-size: 14px;
+  color: ${({ theme }) => theme.text.default};
+
+  @media (min-width: 640px) {
+    font-size: 18px;
+  }
+`;
+
+export const StyledSpanRedirect = styled.span`
+  margin-left: 4px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text.default};
 `;

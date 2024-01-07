@@ -59,9 +59,7 @@ export interface UserLoginResponse {
   user: User;
 }
 
-export interface UserRegisterResponse {
-  user: User;
-}
+export type UserRegisterResponse = User;
 
 export interface UserLoginError {
   data: {

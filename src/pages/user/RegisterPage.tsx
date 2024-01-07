@@ -1,7 +1,15 @@
 import React from 'react';
+import RegisterForm from '../../components/user/RegisterForm';
+import { StyledContainer, StyledSection } from './RegisterPage.css';
 
 const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <StyledSection>
+      <StyledContainer>
+        <RegisterForm />
+      </StyledContainer>
+    </StyledSection>
+  );
 };
 
 export default RegisterPage;

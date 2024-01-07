@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
@@ -14,18 +14,31 @@ import {
   StyledSpanRedirect,
   StyledTitleForm,
 } from '../ui/Form.css';
-import { UserFormLogin } from '../../types/user';
+import { UserFormRegister } from '../../types/user';
 import SpinnerBtn from '../ui/SpinnerBtn';
 import { useMutation } from '@tanstack/react-query';
-import { login } from '../../api/user';
+import { login, register } from '../../api/user';
 import { Link, useNavigate } from 'react-router-dom';
 import useGetAllQueryParams from '../../hooks/useGetAllQueryParams';
 import { setLoggedUser } from '../../store/slices/userSlice';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { redirect } = useGetAllQueryParams();
+  const passwordInputRef = useRef<HTMLInputElement | null>(null);
+
+  const registerMutation = useMutation({
+    mutationFn: register,
+    onSuccess: (data) => {
+      if (data && data.email && passwordInputRef.current !== null) {
+        loginMutation.mutate({
+          email: data.email,
+          password: passwordInputRef.current.value,
+        });
+      }
+    },
+  });
 
   const loginMutation = useMutation({
     mutationFn: login,
@@ -35,18 +48,24 @@ const LoginForm = () => {
     },
   });
 
-  const initialValues: UserFormLogin = {
+  const initialValues: UserFormRegister = {
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
   };
 
   const validationSchema = yup.object().shape({
-    email: yup.string().required().email().min(4).max(50),
+    first_name: yup.string().required().min(4).max(50),
+    last_name: yup.string().required().min(4).max(50),
+    email: yup.string().required().email().min(4).max(200),
     password: yup.string().required().min(4).max(50),
   });
-  const submitForm = async (values: UserFormLogin) => {
-    loginMutation.mutate(values);
+
+  const submitForm = async (values: UserFormRegister) => {
+    registerMutation.mutate(values);
   };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -64,7 +83,7 @@ const LoginForm = () => {
         } = formik;
         return (
           <StyledForm onSubmit={handleSubmit} noValidate>
-            <StyledTitleForm>Login</StyledTitleForm>
+            <StyledTitleForm>Register</StyledTitleForm>
             <StyledBoxLabelError>
               <StyledLabel>Email</StyledLabel>
               {errors.email && touched.email && (
@@ -91,19 +110,46 @@ const LoginForm = () => {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
+              ref={passwordInputRef}
+            />
+            <StyledBoxLabelError>
+              <StyledLabel>First name</StyledLabel>
+              {errors.first_name && touched.first_name && (
+                <StyledPError>{errors.first_name}</StyledPError>
+              )}
+            </StyledBoxLabelError>
+            <StyledInput
+              name='first_name'
+              type='text'
+              value={values.first_name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <StyledBoxLabelError>
+              <StyledLabel>Last name</StyledLabel>
+              {errors.last_name && touched.last_name && (
+                <StyledPError>{errors.last_name}</StyledPError>
+              )}
+            </StyledBoxLabelError>
+            <StyledInput
+              name='last_name'
+              type='text'
+              value={values.last_name}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
             <StyledBtnSubmit>
-              Login{loginMutation.isPending && <SpinnerBtn />}
+              Register{registerMutation.isPending && <SpinnerBtn />}
             </StyledBtnSubmit>
             <StyledPRedirect>
-              Don't have an account?
-              <Link to='/register'>
+              Already have an account?
+              <Link to='/login'>
                 <StyledSpanRedirect>Sign in</StyledSpanRedirect>
               </Link>
             </StyledPRedirect>
-            {loginMutation.isError && (
+            {registerMutation.isError && (
               <StyledPErrorSubmit>
-                {loginMutation.error.message}
+                {registerMutation.error.message}
               </StyledPErrorSubmit>
             )}
           </StyledForm>
@@ -113,4 +159,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
