@@ -18,6 +18,8 @@ import { persistor, RootState, store } from './store/index';
 import { PersistGate } from 'redux-persist/integration/react';
 import ConfirmDialog from './components/ui/ConfirmDialog';
 import { darkTheme, lightTheme } from './styles/theme';
+import LoginPage from './pages/user/LoginPage';
+import RegisterPage from './pages/user/RegisterPage';
 
 const Layout = () => {
   const StyledMain = styled.main`
@@ -82,9 +84,17 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
 ]);
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const App = () => {
   const isDarkTheme = useSelector(

@@ -1,16 +1,16 @@
 import React, { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
-import { Formik, FormikHelpers, FormikProps } from 'formik';
-import { FiChevronDown } from 'react-icons/fi';
-import { useQuery } from '@tanstack/react-query';
+import { Formik, FormikHelpers, FormikProps, useFormikContext } from 'formik';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { openPopup } from '../../store/slices/popupSlice';
 
 import { useDispatch } from 'react-redux';
-import { Category, FormAddProduct } from '../../types/product';
+import { FormAddProduct } from '../../types/product';
 import { ALLOWED_TYPES } from '../../constants/form';
 import SpinnerBtn from '../ui/SpinnerBtn';
+import { addProduct } from '../../api/product';
 
 import {
-  ArrowIcon,
   StyledBoxLabelError,
   StyledBtnSubmit,
   StyledContainerUpload,
@@ -20,10 +20,9 @@ import {
   StyledLabel,
   StyledLabelUpload,
   StyledPError,
+  StyledPErrorSubmit,
   StyledPTypes,
   StyledPUpload,
-  StyledSelect,
-  StyledSelectContainer,
   StyledSpanUpload,
   StyledSVGUpload,
   StyledTextarea,
@@ -38,10 +37,21 @@ const AddProductForm = () => {
   const dispatch = useDispatch();
   const [uploadedFileName, setUploadedFileName] = useState<string>('');
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const formikContext = useFormikContext();
 
   const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: () => getAllRecords(Endpoint.Categories),
+  });
+
+  const addProductMutation = useMutation({
+    mutationFn: addProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+      formikContext.resetForm();
+      dispatch(openPopup('Product has been added!'));
+    },
   });
 
   const initialValues: FormAddProduct = {
@@ -98,7 +108,7 @@ const AddProductForm = () => {
     values: FormAddProduct,
     { resetForm }: FormikHelpers<FormAddProduct>
   ) => {
-    console.log(values);
+    addProductMutation.mutate(values);
   };
 
   return (
@@ -228,7 +238,14 @@ const AddProductForm = () => {
                 </option>
               ))}
             </CustomSelect>
-            <StyledBtnSubmit>Add product</StyledBtnSubmit>
+            <StyledBtnSubmit>
+              Add product{addProductMutation.isPending && <SpinnerBtn />}
+            </StyledBtnSubmit>
+            {addProductMutation.isError && (
+              <StyledPErrorSubmit>
+                {addProductMutation.error.message}
+              </StyledPErrorSubmit>
+            )}
           </StyledForm>
         );
       }}
