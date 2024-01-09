@@ -1,7 +1,13 @@
 import React from 'react';
+import EditProductForm from '../../components/product/EditProductForm';
+import { StyledContainer } from './EditProductPage.css';
 
 const EditProductPage = () => {
-  return <div>EditProductPage</div>;
+  return (
+    <StyledContainer>
+      <EditProductForm />
+    </StyledContainer>
+  );
 };
 
 export default EditProductPage;
