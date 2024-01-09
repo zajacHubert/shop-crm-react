@@ -40,7 +40,7 @@ export const getRecordById = async <
   endpoint: T,
   id: string
 ): Promise<EndpointDataSingleRecordMap[T]> => {
-  const res = await shopApiInstance.get(`/$${endpoint}/${id}`);
+  const res = await shopApiInstance.get(`/${endpoint}/${id}`);
 
   if (res.status >= 200 && res.status < 300) {
     return res.data as EndpointDataSingleRecordMap[T];
