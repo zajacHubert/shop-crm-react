@@ -22,6 +22,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/userSlice';
 import { RootState } from '../../store';
 import ThemeToggler from './ThemeToggler';
+import { useMutation } from '@tanstack/react-query';
+import { logout as logoutRequest } from '../../api/user';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -40,10 +42,13 @@ const Header = () => {
     }
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate('/');
-  };
+  const logoutMutation = useMutation({
+    mutationFn: logoutRequest,
+    onSuccess: () => {
+      dispatch(logout());
+      navigate('/');
+    },
+  });
 
   return (
     <StyledHeader>
@@ -120,7 +125,12 @@ const Header = () => {
             )}
             {loggedUser ? (
               <StyledListItem>
-                <StyledBtnLogin onClick={handleLogout}>Logout</StyledBtnLogin>
+                <StyledBtnLogin
+                  onClick={() => logoutMutation.mutate()}
+                  disabled={logoutMutation.isPending}
+                >
+                  Logout
+                </StyledBtnLogin>
               </StyledListItem>
             ) : (
               <StyledListItem>
